@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  pgsql:
+    image: postgres:latest
+    container_name: pgsql
+    ports:
+      - 5434:5432
+    volumes:
+      - ./pgsqldata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: app
+      POSTGRES_USER: app
+      POSTGRES_DB: app
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9090:8080
