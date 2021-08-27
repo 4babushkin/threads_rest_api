@@ -14,7 +14,7 @@ func Get(context *gin.Context) {
 	name := context.Param("instans")
 	config, err := ReadConfig(os.Getenv("APP_THREAD_LIC_DIR") + "/" + name + ".txt")
 	if err != nil {
-		context.JSON(http.StatusOK, gin.H{"error": "no such instans"})
+		context.JSON(404, gin.H{"error": err.Error()})
 		return
 	}
 	type Instance struct {
